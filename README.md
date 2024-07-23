@@ -9,6 +9,7 @@
   - [4-(1~4) 엔티티 테이블 매핑](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section4%20%EC%97%94%ED%8B%B0%ED%8B%B0%20%EB%A7%A4%ED%95%91)
     - 객체와 테이블 매핑, 하이버네이트 DDL AUTO, 필드와 컬럼 매핑, 기본키 매핑 전략(IDENTITY, SEQUENCE, TABLE)
   - [4-5 실전 예제, 기본 매핑](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpashop/Section4%20%EC%97%94%ED%8B%B0%ED%8B%B0%20%EB%A7%A4%ED%95%91)
+- [Section5 연관관계 매핑 기초](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section5%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%20%EA%B8%B0%EC%B4%88)
     - 기본 매핑, 데이터 중심 설계의 문제점
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
