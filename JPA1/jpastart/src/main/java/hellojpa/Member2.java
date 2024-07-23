@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * 기본 키 매핑 공부용
  */
-@Entity
+// @Entity
 public class Member2 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

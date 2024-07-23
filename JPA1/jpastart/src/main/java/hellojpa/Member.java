@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity
+// @Entity
 public class Member {
     /**
      * PK: @Id
