@@ -1,8 +1,8 @@
-package hellojpa.relationship2;
+package hellojpa.relationship3;
 
 import jakarta.persistence.*;
 
-// @Entity
+@Entity
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
