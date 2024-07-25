@@ -1,20 +1,19 @@
-package hellojpa.relationship3;
+package hellojpa.relationship4;
 
 import jakarta.persistence.*;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 단방향 연관관계에서 양방향 연결
- * 사실 데이터베이스에서는 방향 개념이 없다 외래키 하나로 조인을 하면된다.
- * 하지만 객체에선 방향이 존재한다.
+ * 1:N 1대다 단방향
  */
-// @Entity
+@Entity
 public class Team {
     @Id @GeneratedValue
     @Column(name = "TEAM_ID")
     private Long id;
-    @OneToMany(mappedBy = "team") // Member에서 Team 참조 변수
+    @OneToMany
+    @JoinColumn(name = "TEAM_ID")
     private List<Member> members = new ArrayList<>();
     private String name;
 

@@ -1,8 +1,11 @@
-package hellojpa.relationship3;
+package hellojpa.relationship4;
 
 import jakarta.persistence.*;
 
-// @Entity
+/**
+ * 1:N 1대다 단방향
+ */
+@Entity
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
@@ -10,7 +13,7 @@ public class Member {
     @Column(name = "USERNAME")
     private String username;
     @ManyToOne
-    @JoinColumn(name = "TEAM_ID") // 관계를 매핑할때 외래키로 사용하는 컬럼
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
     private Team team;
 
     public Long getId() {
@@ -29,11 +32,4 @@ public class Member {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 }
