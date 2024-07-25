@@ -12,8 +12,11 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
     @ManyToOne
-    @JoinColumn("MEMBER_ID")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")  // 1대1 - 양방향 - 외래키 주인
+    private Delivery delivery;
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
     private LocalDateTime orderDate;
