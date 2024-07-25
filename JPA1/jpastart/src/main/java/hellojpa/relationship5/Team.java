@@ -1,13 +1,15 @@
-package hellojpa.relationship4;
+package hellojpa.relationship5;
 
+import hellojpa.relationship5.Member;
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 1:N 1대다 단방향
  */
-// @Entity
+@Entity
 public class Team {
     @Id @GeneratedValue
     @Column(name = "TEAM_ID")

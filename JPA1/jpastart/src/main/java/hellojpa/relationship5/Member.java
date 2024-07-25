@@ -1,11 +1,11 @@
-package hellojpa.relationship4;
+package hellojpa.relationship5;
 
 import jakarta.persistence.*;
 
 /**
- * 1:N 1대다 단방향
+ * 1:1 Locker : Member
  */
-// @Entity
+@Entity
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
@@ -15,6 +15,9 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
     private Team team;
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID") // 외래키 관리
+    private Locker locker;
 
     public Long getId() {
         return id;
