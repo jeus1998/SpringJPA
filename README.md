@@ -12,6 +12,11 @@
     - 기본 매핑, 데이터 중심 설계의 문제점
 - [Section5 연관관계 매핑 기초](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section5%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%20%EA%B8%B0%EC%B4%88)
     - ``@OneToMany, @ManyToOne, @JoinColumn``, mappedBy, 관계의 주인, 객체 모델링과 테이블 모델링 패러다임 일치, 단방향, 양방향 
+- Section6 다양한 연관관계 매핑 
+  - [다양한 연관관계 매핑 이론, 연습](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section6%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91)
+    - 1:1, 1:N, N:1, N:M
+  - [매핑 실전예제3](https://github.com/jeus1998/SpringJPA/blob/main/JPA1/jpashop/Section6%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91/6-5%20%EC%8B%A4%EC%A0%84%20%EC%98%88%EC%A0%9C3%20-%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91.md)
+    - 1:1 관계, N:M 관계, 계층형 데이터(카테고리)
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
