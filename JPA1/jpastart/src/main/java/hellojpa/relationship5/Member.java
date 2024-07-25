@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * 1:1 Locker : Member
  */
-@Entity
+// @Entity
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")

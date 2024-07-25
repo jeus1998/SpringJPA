@@ -2,7 +2,7 @@ package hellojpa.relationship5;
 
 import jakarta.persistence.*;
 
-@Entity
+// @Entity
 public class Locker {
     @Id
     @GeneratedValue
