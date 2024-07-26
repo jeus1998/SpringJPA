@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * 중간 테이블 엔티티로 승격
  */
-@Entity
+// @Entity
 @Table(name = "ORDERS")
 public class Order {
     @Id
