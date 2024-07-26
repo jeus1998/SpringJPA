@@ -6,15 +6,32 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// @Entity
-public class Member  extends BaseEntity {
+@Entity
+public class Member{
     @Id
     @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
+    private String username;
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+    public Team getTeam() {
+        return team;
+    }
 
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public Long getId() {
         return id;
     }

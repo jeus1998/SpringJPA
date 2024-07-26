@@ -2,7 +2,7 @@ package hellojpa.inheritance2;
 
 import jakarta.persistence.*;
 
-@Entity
+// @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
 public class Product extends BaseEntity{
