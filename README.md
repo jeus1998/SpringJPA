@@ -20,6 +20,9 @@
 - [Section7 고급매핑](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section7%20%EA%B3%A0%EA%B8%89%20%EB%A7%A4%ED%95%91)
   - `@Inheritance`, 3가지 전략: `JOINED, SINGLE_TABLE, TABLE_PER_CLASS`, `@DiscriminatorColumn`, `@DiscriminatorValue`
   - `@MappedSuperclass`, 매핑 정보 상속, 베이스 엔티티 
+- [Section8 프록시와 연관관계 관리](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section8%20%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EA%B4%80%EB%A6%AC)
+  - 프록시, 프록시 초기화 과정, 프록시 관련 편의 메서드, 즉시 로딩(EAGER), 지연 로딩(LAZY)
+  - 영속성 전이(CASCADE), 고아 객체(orphanRemoval = true)
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
