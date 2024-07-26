@@ -17,6 +17,9 @@
     - 1:1, 1:N, N:1, N:M
   - [매핑 실전예제3](https://github.com/jeus1998/SpringJPA/blob/main/JPA1/jpashop/Section6%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91/6-5%20%EC%8B%A4%EC%A0%84%20%EC%98%88%EC%A0%9C3%20-%20%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91.md)
     - 1:1 관계, N:M 관계, 계층형 데이터(카테고리)
+- [Section7 고급매핑](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section7%20%EA%B3%A0%EA%B8%89%20%EB%A7%A4%ED%95%91)
+  - `@Inheritance`, 3가지 전략: `JOINED, SINGLE_TABLE, TABLE_PER_CLASS`, `@DiscriminatorColumn`, `@DiscriminatorValue`
+  - `@MappedSuperclass`, 매핑 정보 상속, 베이스 엔티티 
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
