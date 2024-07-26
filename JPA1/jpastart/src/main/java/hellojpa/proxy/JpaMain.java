@@ -15,39 +15,39 @@ public class JpaMain {
 
         tx.begin();
         try {
-            Team team = new Team();
-            team.setName("레알 마드리드");
+            //저장
+           Team team = new Team();
+           team.setName("TeamA");
 
-            Team team2 = new Team();
-            team2.setName("바르셀로나");
+           em.persist(team);
 
-            em.persist(team);
-            em.persist(team2);
+           Member member1 = new Member();
+           Member member2 = new Member();
+           member1.setUsername("member1");
+           member1.setTeam(team);
+           member2.setUsername("member2");
+           member2.setTeam(team);
 
-            Member member = new Member();
-            member.setUsername("hello");
-            member.setTeam(team);
+           em.persist(member1);
+           em.persist(member2);
 
-            Member member2 = new Member();
-            member2.setUsername("hello");
-            member2.setTeam(team2);
+           em.flush();
+           em.clear();
 
-            Member member3 = new Member();
-            member3.setUsername("hello");
-            member3.setTeam(team2);
 
-            em.persist(member);
-            em.persist(member2);
-            em.persist(member3);
-
-            em.flush();
-            em.clear();
-
-            // Member m = em.find(Member.class, member.getId());
-
-            List<Member> members = em.createQuery("select m from Member as m join fetch m.team", Member.class)
-                    .getResultList();
-
+            System.out.println("=======================================");
+            Team findTeam = em.createQuery("SELECT t FROM Team t WHERE t.id = :id", Team.class)
+                             .setParameter("id", team.getId())
+                             .getSingleResult();
+            System.out.println("=======================================");
+            System.out.println(findTeam.getMembers().getClass());
+            System.out.println(emf.getPersistenceUnitUtil().isLoaded(findTeam.getMembers()));
+            List<Member> members = findTeam.getMembers();
+            for (Member m : members) {
+                System.out.println(emf.getPersistenceUnitUtil().isLoaded(findTeam.getMembers()));
+                System.out.println("m.getClass() = " + m.getClass());
+                System.out.println("m.getUsername() = " + m.getUsername());
+            }
 
             tx.commit();
         }
