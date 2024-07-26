@@ -1,5 +1,7 @@
 package hellojpa;
 
+import hellojpa.inheritance.Item;
+import hellojpa.inheritance.Movie;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -28,6 +30,19 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Movie movie = new Movie();
+            movie.setDirector("aaa");
+            movie.setActor("bbb");
+            movie.setName("괴물");
+            movie.setPrice(10000);
+
+            em.persist(movie);
+            em.flush();
+            em.clear();
+
+            // 부모 타입을 조회
+            Item item = em.find(Item.class, movie.getId());
+            System.out.println("item = " + item);
 
             tx.commit();
         }
