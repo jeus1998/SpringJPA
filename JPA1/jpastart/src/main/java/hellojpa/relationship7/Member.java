@@ -15,7 +15,7 @@ public class Member{
     private String username;
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
     public Team getTeam() {
