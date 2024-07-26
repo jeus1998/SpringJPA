@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.util.*;
 import java.time.LocalDateTime;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Table(name = "ORDERS")
 public class Order extends BaseEntity{
@@ -11,13 +13,13 @@ public class Order extends BaseEntity{
     @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-    @OneToOne
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID")  // 1대1 - 양방향 - 외래키 주인
     private Delivery delivery;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
     private LocalDateTime orderDate;
     @Enumerated(EnumType.STRING)
