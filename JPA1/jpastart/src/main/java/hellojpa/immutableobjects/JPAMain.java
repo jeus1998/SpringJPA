@@ -5,6 +5,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class JPAMain {
     public static void main(String[] args) {
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -13,21 +16,16 @@ public class JPAMain {
        tx.begin();
 
        try {
-           Address address = new Address("city", "street", "10000");
+           Address address1 = new Address("city", "street", "10000");
+           Address address2 = new Address("city", "street", "10000");
 
-           Test member1 = new Test();
-           member1.setName("member1");
-           member1.setAddress(address);
-           em.persist(member1);
+           System.out.println(address1.equals(address2)); // true
 
-           Test member2 = new Test();
-           member2.setName("member2");
-           member2.setAddress(address);
-           em.persist(member2);
+           Set<Address> set = new HashSet<>();
+           set.add(address1);
+           set.add(address2);
 
-           // Address 불변 객체로 생성 setter 가 없다.
-           Address updateAddress = new Address("newCity", address.getStreet(), address.getZipcode());
-           member2.setAddress(updateAddress);
+           System.out.println(set.size()); // 1
 
            tx.commit();
        }
