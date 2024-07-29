@@ -2,7 +2,7 @@ package hellojpa.type;
 
 import jakarta.persistence.Embeddable;
 
-@Embeddable
+// @Embeddable
 public class Address {
     private String city;
     private String street;

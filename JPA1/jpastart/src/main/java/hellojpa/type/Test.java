@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * 임베디드 타입 테스트 용
  */
-@Entity
+// @Entity
 public class Test {
     @Id
     @GeneratedValue
