@@ -21,11 +21,12 @@ public class People {
     )
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFoods = new HashSet<>();
-    @ElementCollection // default = LAZY
+    @ElementCollection
     @CollectionTable(name = "ADDRESS", joinColumns =
             @JoinColumn(name = "PEOPLE_ID")
     )
     private List<Address> addressHistory = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
