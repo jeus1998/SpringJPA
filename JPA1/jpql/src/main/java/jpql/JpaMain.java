@@ -1,7 +1,11 @@
 package jpql;
 
 import jakarta.persistence.*;
+import jpql.domain.Address;
 import jpql.domain.Member;
+import jpql.domain.Order;
+import jpql.domain.Team;
+import jpql.dto.MemberDto;
 
 import java.util.List;
 
@@ -13,15 +17,16 @@ public class JpaMain {
         tx.begin();
         try {
             Member member = new Member();
-            member.setUsername("member1");
-            member.setAge(10);
+            member.setUsername("zeus");
+            member.setAge(100);
             em.persist(member);
 
-            Member singleResult = em.createQuery("select m from Member m where m.username = ?1", Member.class)
-                    .setParameter(1, "member1")
-                    .getSingleResult();
+            MemberDto singleResult =
+                    em.createQuery("select new jpql.dto.MemberDto(m.username, m.age) from Member m", MemberDto.class)
+                            .getSingleResult();
 
-            System.out.println("singleResult = " + singleResult);
+            System.out.println("username = " + singleResult.getUsername());
+            System.out.println("age = " + singleResult.getAge());
 
             tx.commit();
         }
