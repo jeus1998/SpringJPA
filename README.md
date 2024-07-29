@@ -23,6 +23,11 @@
 - [Section8 프록시와 연관관계 관리](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section8%20%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EA%B4%80%EB%A6%AC)
   - 프록시, 프록시 초기화 과정, 프록시 관련 편의 메서드, 즉시 로딩(EAGER), 지연 로딩(LAZY)
   - 영속성 전이(CASCADE), 고아 객체(orphanRemoval = true)
+- [Section9 값 타입](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section9%20%EA%B0%92%20%ED%83%80%EC%9E%85)
+  - 임베디드 타입: `@Embeddable, @Embedded`, `@AttributeOverride, @AttributeOverrides`
+  - 값 타입 & 불변 객체: 부작용(side effect)
+  - 값 타입의 비교: 동일성 & 동등성(equals(), hashcode())
+  - 값 타입 컬렉션: `@ElementCollection, @CollectionTable`, 값 타입 컬렉션의 제약사항
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
