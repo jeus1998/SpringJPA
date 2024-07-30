@@ -20,26 +20,25 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            Book book = new Book();
-            book.setName("JPA");
-            book.setPrice(1000);
-            em.persist(book);
 
-            Movie movie = new Movie();
-            movie.setName("300");
-            movie.setPrice(100000);
-            em.persist(movie);
+            Team team = new Team();
+            team.setName("B");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            em.persist(member);
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-            List<Item> resultList =
-                    em.createQuery("select i from Item i where type(i)=Book")
-                    .getResultList();
-
-            for (Item item : resultList) {
-                System.out.println("item.getName() = " + item.getName());
-                System.out.println("item.getPrice() = " + item.getPrice());
+            List<String> resultList = em.createQuery("select NULLIF(m.username, 'member1') as username from Member m", String.class).getResultList();
+            for (String s : resultList) {
+                System.out.println(s);
             }
 
             tx.commit();
