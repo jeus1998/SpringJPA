@@ -28,6 +28,12 @@
   - 값 타입 & 불변 객체: 부작용(side effect)
   - 값 타입의 비교: 동일성 & 동등성(equals(), hashcode())
   - 값 타입 컬렉션: `@ElementCollection, @CollectionTable`, 값 타입 컬렉션의 제약사항
+- [Section10 JPQL 기본 문법](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpql/Section10%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%BF%BC%EB%A6%AC%20%EC%96%B8%EC%96%B41%20-%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95)
+  - TypeQuery, Query, 파라미터 바인딩(이름 기준, 위치 기준)
+  - 프로젝션(엔티티, 임베디드, 스칼라 타입), 여러 값 조회(Query 타입, Object[] 타입, new 명령어)
+  - 페이징 API - setFirstResult(), setMaxResults
+  - 조인, 서브 쿼리, JPQL 타입 표현
+  - 조건식 - CASE, 기본 함수, 사용자 정의 함수 
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
