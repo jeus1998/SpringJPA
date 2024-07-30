@@ -12,11 +12,19 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+    @Enumerated(EnumType.STRING)
+    private MemberType memberType;
 
     // 연관관계 편의 메서드
     public void changeTeam(Team team){
         setTeam(team);
         team.getMembers().add(this);
+    }
+    public MemberType getMemberType() {
+        return memberType;
+    }
+    public void setMemberType(MemberType memberType) {
+        this.memberType = memberType;
     }
     public int getAge() {
         return age;

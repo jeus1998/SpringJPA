@@ -1,15 +1,17 @@
 package jpql;
 
 import jakarta.persistence.*;
-import jpql.domain.Address;
-import jpql.domain.Member;
-import jpql.domain.Order;
-import jpql.domain.Team;
+import jpql.domain.*;
 import jpql.dto.MemberDto;
+import jpql.test.Book;
+import jpql.test.Item;
+import jpql.test.Movie;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+
+import static jpql.domain.MemberType.*;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -18,27 +20,27 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            Team team = new Team();
-            team.setName("A");
-            em.persist(team);
+            Book book = new Book();
+            book.setName("JPA");
+            book.setPrice(1000);
+            em.persist(book);
 
-            Member member = new Member();
-            member.setUsername("A");
-            member.setAge(10);
-            member.changeTeam(team);
-            em.persist(member);
-
-            Member member2 = new Member();
-            member2.setUsername("A2");
-            member2.setAge(20);
-            member2.changeTeam(team);
-            em.persist(member2);
+            Movie movie = new Movie();
+            movie.setName("300");
+            movie.setPrice(100000);
+            em.persist(movie);
 
             em.flush();
             em.clear();
 
-            List<Order> resultList = em.createQuery("select o from Order o where o.orderAmount > ALL (select p.stockAmount from Product p )").getResultList();
-            System.out.println("size = " + resultList.size());
+            List<Item> resultList =
+                    em.createQuery("select i from Item i where type(i)=Book")
+                    .getResultList();
+
+            for (Item item : resultList) {
+                System.out.println("item.getName() = " + item.getName());
+                System.out.println("item.getPrice() = " + item.getPrice());
+            }
 
             tx.commit();
         }
