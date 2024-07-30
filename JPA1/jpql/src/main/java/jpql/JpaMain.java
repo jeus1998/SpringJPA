@@ -31,19 +31,19 @@ public class JpaMain {
             Member member2 = new Member();
             member2.setUsername("A2");
             member2.setAge(20);
+            member2.changeTeam(team);
             em.persist(member2);
 
             em.flush();
             em.clear();
 
-            List<Object[]> resultList = em.createQuery("SELECT m, t FROM Member m LEFT JOIN Team t on m.username = t.name").getResultList();
-            for (Object[] objects : resultList) {
-                System.out.println(Arrays.toString(objects));
-            }
+            List<Order> resultList = em.createQuery("select o from Order o where o.orderAmount > ALL (select p.stockAmount from Product p )").getResultList();
+            System.out.println("size = " + resultList.size());
 
             tx.commit();
         }
         catch (Exception e){
+            e.printStackTrace();
             tx.rollback();
         }
         finally {
