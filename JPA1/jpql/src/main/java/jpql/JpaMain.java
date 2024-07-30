@@ -20,24 +20,29 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
+            Team team1 = new Team();
+            team1.setName("A");
+            em.persist(team1);
 
-            Team team = new Team();
-            team.setName("B");
-            em.persist(team);
+            Team team2 = new Team();
+            team2.setName("B");
+            em.persist(team2);
 
             Member member = new Member();
             member.setUsername("member1");
+            member.changeTeam(team2);
             em.persist(member);
 
             Member member2 = new Member();
             member2.setUsername("member2");
+            member2.changeTeam(team2);
             em.persist(member2);
 
             em.flush();
             em.clear();
 
-            List<String> resultList = em.createQuery("select NULLIF(m.username, 'member1') as username from Member m", String.class).getResultList();
-            for (String s : resultList) {
+            List<Integer> resultList = em.createQuery("select SIZE(t.members) from Team t", Integer.class).getResultList();
+            for (Integer s : resultList) {
                 System.out.println(s);
             }
 
