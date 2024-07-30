@@ -21,31 +21,43 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            Team team1 = new Team();
-            team1.setName("A");
-            em.persist(team1);
+            Team teamA = new Team();
+            teamA.setName("팀A");
+            em.persist(teamA);
+            Team teamB = new Team();
+            teamB.setName("팀B");
+            em.persist(teamB);
+            Team teamC = new Team();
+            teamC.setName("팀C");
+            em.persist(teamC);
 
-            Team team2 = new Team();
-            team2.setName("B");
-            em.persist(team2);
-
-            Member member = new Member();
-            member.setUsername("member1");
-            member.changeTeam(team2);
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setUsername("회원1");
+            member1.changeTeam(teamA);
+            em.persist(member1);
 
             Member member2 = new Member();
-            member2.setUsername("member2");
-            member2.changeTeam(team2);
+            member2.setUsername("회원2");
+            member2.changeTeam(teamA);
             em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername("회원3");
+            member3.changeTeam(teamB);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername("회원4");
+            em.persist(member4);
 
             em.flush();
             em.clear();
 
-            List<String> resultList = em.createQuery("select m.username From Team t join t.members m", String.class)
-                    .getResultList();
 
-            System.out.println(resultList);
+            List<Team> resultList = em.createQuery("select t FROM Team t join fetch t.members", Team.class).getResultList();
+            for (Team team : resultList) {
+                System.out.println("team = " + team.getName() + "|" + team.getMembers());
+            }
 
             tx.commit();
         }
