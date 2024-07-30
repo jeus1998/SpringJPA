@@ -9,6 +9,7 @@ import jpql.test.Movie;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static jpql.domain.MemberType.*;
@@ -41,10 +42,10 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            List<Integer> resultList = em.createQuery("select SIZE(t.members) from Team t", Integer.class).getResultList();
-            for (Integer s : resultList) {
-                System.out.println(s);
-            }
+            List<String> resultList = em.createQuery("select m.username From Team t join t.members m", String.class)
+                    .getResultList();
+
+            System.out.println(resultList);
 
             tx.commit();
         }
