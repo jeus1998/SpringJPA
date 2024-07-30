@@ -7,6 +7,8 @@ import jpql.domain.Order;
 import jpql.domain.Team;
 import jpql.dto.MemberDto;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class JpaMain {
@@ -16,23 +18,27 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            for(int i = 1; i <= 100; i++){
-                Member member = new Member();
-                member.setUsername("member" + i);
-                member.setAge(i);
-                em.persist(member);
-            }
+            Team team = new Team();
+            team.setName("A");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("A");
+            member.setAge(10);
+            member.changeTeam(team);
+            em.persist(member);
+
+            Member member2 = new Member();
+            member2.setUsername("A2");
+            member2.setAge(20);
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-            List<Member> resultList = em.createQuery("select m from Member m order by m.age asc", Member.class)
-                    .setFirstResult(0)
-                    .setMaxResults(10)
-                    .getResultList();
-            System.out.println("resultList.size() = " + resultList.size());
-            for (Member member : resultList) {
-                System.out.println("member = " + member);
+            List<Object[]> resultList = em.createQuery("SELECT m, t FROM Member m LEFT JOIN Team t on m.username = t.name").getResultList();
+            for (Object[] objects : resultList) {
+                System.out.println(Arrays.toString(objects));
             }
 
             tx.commit();

@@ -8,6 +8,13 @@ public class Team {
     @Column(name = "TEAM_ID")
     private Long id;
     private String name;
+
+    public List<Member> getMembers() {
+        return members;
+    }
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
     public Long getId() {
