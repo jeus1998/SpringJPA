@@ -53,17 +53,10 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-
-            List<Team> resultList = em.createQuery("select t From Team t", Team.class)
-                    .setFirstResult(0)
-                    .setMaxResults(2)
-                    .getResultList();
-            for (Team team : resultList) {
-                System.out.println("team = " + team.getName());
-                for (Member member : team.getMembers()) {
-                    System.out.println("member = " + member);
-                }
-            }
+            Member findMember = em.createQuery("select m from Member m where m.team = :team", Member.class)
+                    .setParameter("team", teamB)
+                    .getSingleResult();
+            System.out.println("findMember = " + findMember);
 
             tx.commit();
         }
