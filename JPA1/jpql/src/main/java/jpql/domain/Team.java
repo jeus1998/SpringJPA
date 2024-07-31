@@ -1,6 +1,8 @@
 package jpql.domain;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.BatchSize;
+
 import java.util.*;
 @Entity
 public class Team {
@@ -15,6 +17,7 @@ public class Team {
     public void setMembers(List<Member> members) {
         this.members = members;
     }
+    @BatchSize(size = 10)
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
     public Long getId() {
