@@ -53,8 +53,8 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            Member findMember = em.createQuery("select m from Member m where m.team = :team", Member.class)
-                    .setParameter("team", teamB)
+            Member findMember = em.createNamedQuery("Member.findByUsername", Member.class)
+                    .setParameter("username", "회원2")
                     .getSingleResult();
             System.out.println("findMember = " + findMember);
 

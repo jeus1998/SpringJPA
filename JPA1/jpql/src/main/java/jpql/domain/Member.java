@@ -1,8 +1,10 @@
 package jpql.domain;
 
 import jakarta.persistence.*;
-
 @Entity
+@NamedQuery(name = "Member.findByUsername",
+        query = "select m From Member m where m.username = :username"
+)
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
