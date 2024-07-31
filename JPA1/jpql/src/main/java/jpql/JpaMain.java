@@ -50,14 +50,14 @@ public class JpaMain {
             member4.setUsername("회원4");
             em.persist(member4);
 
+            int resultRow = em.createQuery("update  Member m set m.age = 30").executeUpdate();
+            System.out.println("resultRow = " + resultRow);
+
+            System.out.println(member3.getAge());
+            System.out.println(member4.getAge());
+
             em.flush();
             em.clear();
-
-            Member findMember = em.createNamedQuery("Member.findByUsername", Member.class)
-                    .setParameter("username", "회원2")
-                    .getSingleResult();
-            System.out.println("findMember = " + findMember);
-
             tx.commit();
         }
         catch (Exception e){
