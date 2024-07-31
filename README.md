@@ -34,6 +34,12 @@
   - 페이징 API - setFirstResult(), setMaxResults
   - 조인, 서브 쿼리, JPQL 타입 표현
   - 조건식 - CASE, 기본 함수, 사용자 정의 함수 
+- [Section11 JPQL 중급 문법](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpql/Section11%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%BF%BC%EB%A6%AC%20%EC%96%B8%EC%96%B42%20-%20%EC%A4%91%EA%B8%89%20%EB%AC%B8%EB%B2%95)
+  - 경로 표현식: 상태 필드, 연관 필드, 단일 값 연관 경로, 컬렉션 연관 경로 
+  - 페치 조인: 페치 조인 특징 & 한계, `@BatchSize()`, N+1 문제, 컬렉션 패치 조인과 페이징 문제 
+  - 다형성 쿼리(TYPE(), TREAT()), 엔티티 직접 사용(엔티티 식별자(pk))
+  - 네임드 쿼리: `@NamedQuery`, createNamedQuery()
+  - 벌크 연산: executeUpdate(), 벌크 연산 주의점(영속성 컨텍스트), Dirty Checking vs 벌크 연산  
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
