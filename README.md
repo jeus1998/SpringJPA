@@ -41,7 +41,10 @@
   - 네임드 쿼리: `@NamedQuery`, createNamedQuery()
   - 벌크 연산: executeUpdate(), 벌크 연산 주의점(영속성 컨텍스트), Dirty Checking vs 벌크 연산  
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
-
+- [Section1 프로젝트 환경 설정](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section1%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95)
+  - 라이브러리 체크, View 환경 설정(타임리프), spring-boot-devtools - 서버 재시작❌ View 파일 변경
+  - H2 데이터베이스 설치 
+  - JPA 설정 & DB 설정 - Yaml, Build.gradle
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
 
 ## 스프링 데이터 JPA
