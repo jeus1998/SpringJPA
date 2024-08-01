@@ -122,6 +122,9 @@ class MemberRepositoryTest {
     - `org.hibernate.type: trace`
   - 스프링 부트 3.x, hibernate6
     - `org.hibernate.orm.jdbc.bind: trace`
+
+외부 라이브러리 추가 
+- https://github.com/gavlyukovskiy/spring-boot-data-source-decorator
 - build.gradle 추가
   - `implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'`
   - 쿼리 파라미터를 로그로 남기는 외부 라이브러리는 시스템 자원을 사용하므로, 개발 단계에서는 편하게 사용해도 된다.
