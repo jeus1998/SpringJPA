@@ -1,4 +1,4 @@
-package jpabook.jpashop;
+package jpabook.jpashop.hello;
 
 import lombok.Data;
 
