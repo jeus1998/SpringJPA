@@ -1,8 +1,7 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id @GeneratedValue
@@ -47,7 +47,6 @@ public class Order {
         delivery.setOrder(this);
     }
 
-    // == 생성 메서드 == //
     public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
         Order order = new Order();
         order.setMember(member);
