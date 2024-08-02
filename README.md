@@ -48,6 +48,8 @@
 - [Section2 도메인 분석, 설계](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section2%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EB%B6%84%EC%84%9D%20%EC%84%A4%EA%B3%84)
   - 요구사항 분석, 도메인 모델과 테이블 설계, 엔티티 클래스 개발 
   - 엔티티 설계시 주의점(연관관계 편의 메서드, @Setter, Cascade, 즉시로딩(EAGER), 컬렉션 필드 초기화)
+- [Section3 애플리케이션 구현 준비](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section3%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EA%B5%AC%ED%98%84%20%EC%A4%80%EB%B9%84)
+  - 구현 요구사항, 애플리케이션 아키텍처 설명 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
 
 ## 스프링 데이터 JPA
