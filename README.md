@@ -45,6 +45,9 @@
   - 라이브러리 체크, View 환경 설정(타임리프), spring-boot-devtools - 서버 재시작❌ View 파일 변경
   - H2 데이터베이스 설치 
   - JPA 설정 & DB 설정 - Yaml, Build.gradle
+- [Section2 도메인 분석, 설계](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section2%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EB%B6%84%EC%84%9D%20%EC%84%A4%EA%B3%84)
+  - 요구사항 분석, 도메인 모델과 테이블 설계, 엔티티 클래스 개발 
+  - 엔티티 설계시 주의점(연관관계 편의 메서드, @Setter, Cascade, 즉시로딩(EAGER), 컬렉션 필드 초기화)
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
 
 ## 스프링 데이터 JPA
