@@ -34,15 +34,15 @@ public class Order {
     private OrderStatus status; // 주문 상태 [ORDER, CANCEL]
 
     // 연관관계 편의 메서드
-    public void setMember(Member member){
+    private void setMember(Member member){
         this.member = member;
         member.getOrders().add(this);
     }
-    public void addOrderItem(OrderItem orderItem){
+    private void addOrderItem(OrderItem orderItem){
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
-    public void setDelivery(Delivery delivery){
+    private void setDelivery(Delivery delivery){
         this.delivery = delivery;
         delivery.setOrder(this);
     }
