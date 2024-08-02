@@ -53,6 +53,9 @@
 - [Section4 회원 도메인 개발](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section4%20%ED%9A%8C%EC%9B%90%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EA%B0%9C%EB%B0%9C)
   - 회원 리포지토리, 회원 서비스 개발 
   - 회원 기능 테스트 
+- [Section5 상품 도메인 개발](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section5%20%EC%83%81%ED%92%88%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EA%B0%9C%EB%B0%9C)
+  - 상품 엔티티(비즈니스 로직 추가): 재고 추가, 재고 감소 
+  - 상품 (리포지토리, 서비스) 개발 
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
 
 ## 스프링 데이터 JPA
