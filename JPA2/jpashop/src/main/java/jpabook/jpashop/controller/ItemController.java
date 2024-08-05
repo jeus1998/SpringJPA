@@ -58,7 +58,11 @@ public class ItemController {
         model.addAttribute("form", form);
         return "items/updateItemForm";
     }
-    @PostMapping("/items/{itemId}/edit")
+
+    /**
+     * merge(사용)
+     */
+    // @PostMapping("/items/{itemId}/edit")
     public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
 
         Book book = new Book();
@@ -73,5 +77,13 @@ public class ItemController {
         return "redirect:/items";
     }
 
+    /**
+     * Dirty Checking 변경 감지 사용
+     */
+    @PostMapping("/items/{itemId}/edit")
+    public String updateItemV2(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
+        itemService.update(form);
+        return "redirect:/items";
+    }
 
 }
