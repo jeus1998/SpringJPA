@@ -85,3 +85,16 @@ public class MemberApiController {
 - 추가로 `Result` 클래스로 컬렉션을 감싸서 향후 필요한 필드를 추가할 수 있다.
   - ex) `size`
 
+더 간단하게 적용하기 
+```java
+@GetMapping("/api/v2/members")
+public Result membersV2(){
+    
+    List<MemberDto> collect = memberService.findMembers()
+            .stream()
+            .map(m -> new MemberDto(m.getName()))
+            .collect(Collectors.toList());
+    
+    return new Result(collect, collect.size());
+}
+```
