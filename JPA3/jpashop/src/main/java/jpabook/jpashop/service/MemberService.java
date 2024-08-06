@@ -4,7 +4,6 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -51,4 +50,12 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    /**
+     * Dirty Checking - 변경 감지 활용한 데이터 변경
+     */
+    @Transactional
+    public void update(Long id, String name) {
+        Member findMember = memberRepository.findOne(id);
+        findMember.setName(name);
+    }
 }
