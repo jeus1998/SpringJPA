@@ -73,6 +73,7 @@
   - DTO 사용으로 엔티티와 프레젠테이션 계층을 분리 
   - response : 스트림 연산 & 제네릭 활용 
   - 회원 등록, 수정, 조회 API 개발 
+  - CQS 패턴 - Command - Query - Separation
 ## 스프링 데이터 JPA
 
 ## Querydsl
