@@ -29,7 +29,7 @@ public class OrderController {
      * member 2개
      * 상품 2개
      */
-    @PostConstruct
+    // @PostConstruct
     public void init(){
         Member member = new Member();
         member.setName("member1");
