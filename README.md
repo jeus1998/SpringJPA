@@ -69,7 +69,10 @@
   - 도메인 기능 구현 
   - ⭐️ 변경 감지 vs 병합(merge)
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
-
+- [Section1 API 개발 기본](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section1%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B8%B0%EB%B3%B8)
+  - DTO 사용으로 엔티티와 프레젠테이션 계층을 분리 
+  - response : 스트림 연산 & 제네릭 활용 
+  - 회원 등록, 수정, 조회 API 개발 
 ## 스프링 데이터 JPA
 
 ## Querydsl
