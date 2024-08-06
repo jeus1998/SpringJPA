@@ -63,6 +63,11 @@
   - 도메인 모델 패턴 vs 트랜잭션 스크립트 패턴 
   - 주문 기능 테스트 
   - 동적 쿼리(순수 JPQL, JPA 표준 스펙 - Criteria)
+- [Section7 웹 계층 개발](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section7%20%EC%9B%B9%20%EA%B3%84%EC%B8%B5%20%EA%B0%9C%EB%B0%9C)
+  - 타임리프 레이아웃 아키텍처 Include-style layouts vs Hierarchical-style layouts
+  - bootstrap(JS, CSS) 적용 
+  - 도메인 기능 구현 
+  - ⭐️ 변경 감지 vs 병합(merge)
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
 
 ## 스프링 데이터 JPA
