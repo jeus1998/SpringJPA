@@ -5,6 +5,7 @@ import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 import jpabook.jpashop.domain.Order;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -12,6 +13,7 @@ import java.util.*;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class OrderRepository {
     private final EntityManager em;
     public void save(Order order){
@@ -53,7 +55,7 @@ public class OrderRepository {
              }
              jpql += " m.name like :name";
          }
-
+         log.info("jpql={}", jpql);
          TypedQuery<Order> query = em.createQuery(jpql, Order.class)
                 .setMaxResults(1000); //최대 1000건
          if (orderSearch.getOrderStatus() != null) {
