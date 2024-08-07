@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -70,6 +71,24 @@ public class OrderApiController {
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList()));
     }
+
+    /**
+     * V3-1 Fetch Join + 페이징
+     */
+    @GetMapping("/api/v3-1/orders")
+    public Result ordersV3_page(
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
+            @RequestParam(value = "limit", defaultValue = "100") int limit
+    ){
+        // 해당 쿼리를 toOne 관계를 패치 조인해서 가져온 결과 페이징에 영향 X
+        List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit);
+        return new Result( orders
+                .stream()
+                .map(OrderDto::new)
+                .collect(Collectors.toList())
+        );
+    }
+
 
 
     @Getter
