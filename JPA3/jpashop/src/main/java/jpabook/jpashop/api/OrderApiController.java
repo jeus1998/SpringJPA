@@ -1,13 +1,21 @@
 package jpabook.jpashop.api;
 
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Order -> Member    - ManyToOne
@@ -38,4 +46,58 @@ public class OrderApiController {
         }
         return all;
     }
+
+    /**
+     * V2 엔티티 -> Dto 변환해서 반환
+     * 엔티티를 절대 노출시키지 말자
+     */
+    @GetMapping("/api/v2/orders")
+    public Result ordersV2(){
+        List<Order> orders = orderRepository.findAllByString(new OrderSearch());
+
+        return new Result(orders.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList()));
+    }
+    @Getter
+    @AllArgsConstructor
+    static class Result<T>{
+        private T data;
+    }
+    @Getter
+    @AllArgsConstructor
+    static class OrderDto{
+        private Long orderId;
+        private String name;
+        private LocalDateTime orderDate;
+        private OrderStatus orderStatus;
+        private Address address;
+        private List<OrderItemDto> orderItems;
+        public OrderDto(Order order) {
+            orderId = order.getId();
+            name = order.getMember().getName();
+            orderDate = order.getOrderDate();
+            orderStatus = order.getStatus();
+            address = order.getDelivery().getAddress();
+            orderItems = order.getOrderItems()
+                    .stream()
+                    .map(orderItem -> new OrderItemDto(orderItem))
+                    .collect(Collectors.toList());
+        }
+    }
+    /**
+     * API 에서 요구사항:  상품명, 상품 주문 가격, 주문수량 3가지
+     */
+    @Getter
+    static class OrderItemDto{
+        private String itemName;
+        private int orderPrice;
+        private int count;
+        public OrderItemDto(OrderItem orderItem) {
+            itemName = orderItem.getItem().getName();
+            orderPrice = orderItem.getOrderPrice();
+            count = orderItem.getCount();
+        }
+    }
+
 }
