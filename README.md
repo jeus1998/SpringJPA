@@ -74,6 +74,14 @@
   - response : 스트림 연산 & 제네릭 활용 
   - 회원 등록, 수정, 조회 API 개발 
   - CQS 패턴 - Command - Query - Separation
+- [Section2 API 개발 고급 - 준비](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section2%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%A4%80%EB%B9%84)
+  - 조회용 샘플 데이터 입력 
+- [Section3 API 개발 고급 - 지연 로딩과 조회 성능 최적화](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section3%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%A7%80%EC%97%B0%20%EB%A1%9C%EB%94%A9%EA%B3%BC%20%EC%A1%B0%ED%9A%8C%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94)
+  - 엔티티를 직접 노출(V1): N+1 문제, 화면 계층과 엔티티 강한 결합 문제, 양방향 연관관계 무한 순환 문제(@JsonIgnore), Json 프록시 객체 변환 문제(Hibernate5JakartaModule) 
+  - 엔티티를 DTO로 변환(V2): N+1 문제 
+  - 엔티티를 DTO로 변환 + 패치 조인 활용(V3): N+1 문제 해결 
+  - JPA에서 DTO로 바로 조회(V4): N+1 문제 해결 + V3 보다 성능 개선, 재사용성이 떨어지는 문제, 트레이드 오프 & 권장하는 스타일  
+  - 
 ## 스프링 데이터 JPA
 
 ## Querydsl
