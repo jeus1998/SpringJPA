@@ -51,10 +51,27 @@ public class OrderSimpleApiController {
                 .collect(Collectors.toList());
         return new Result(collect, collect.size());
     }
+
+    /**
+     * 엔티티를 조회해서 DTO로 변환
+     * fetch join 사용
+     * fetch join으로 쿼리 1번 호출
+     */
+    @GetMapping("/api/v3/simple-orders")
+    public Result ordersV3(){
+        return new Result(orderRepository.findAllWithMemberDelivery()
+                .stream()
+                .map(SimpleOrderDto::new)
+                .collect(Collectors.toList()));
+    }
+
     @Getter
     static class Result<T>{
         private int orderCount;
         private T data;
+        public Result(T data) {
+            this.data = data;
+        }
         public Result(T data, int count){
             this.data = data;
             this.orderCount = count;
@@ -70,11 +87,9 @@ public class OrderSimpleApiController {
         private Address address;
         public SimpleOrderDto(Order order) {
             orderId = order.getId();
-            log.info("=================================");
             name = order.getMember().getName();
             orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
-            log.info("=================================");
             address = order.getDelivery().getAddress();
         }
     }
