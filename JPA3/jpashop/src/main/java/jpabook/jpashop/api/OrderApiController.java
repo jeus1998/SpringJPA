@@ -59,6 +59,19 @@ public class OrderApiController {
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList()));
     }
+
+    /**
+     * V3- Fetch Join 사용
+     */
+    @GetMapping("/api/v3/orders")
+    public Result ordersV3(){
+        return new Result(orderRepository.findAllWithItem()
+                .stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList()));
+    }
+
+
     @Getter
     @AllArgsConstructor
     static class Result<T>{
