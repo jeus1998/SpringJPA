@@ -6,6 +6,9 @@ import jpabook.jpashop.domain.OrderItem;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
+import jpabook.jpashop.repository.order.query.OrderFlatDto;
+import jpabook.jpashop.repository.order.query.OrderItemQueryDto;
+import jpabook.jpashop.repository.order.query.OrderQueryDto;
 import jpabook.jpashop.repository.order.query.OrderQueryRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -97,6 +100,39 @@ public class OrderApiController {
     @GetMapping("/api/v5/orders")
     public Result ordersV5(){
         return new Result(orderQueryRepository.findAllByDto_optimization());
+    }
+
+    @GetMapping("/api/v6/orders")
+    public Result ordersV6(){
+        List<OrderFlatDto> flat = orderQueryRepository.findAllByDto_flat();
+
+        // grouping & mapping
+        List<OrderQueryDto> collect = flat.stream()
+                .collect(
+                        // 키
+                        Collectors.groupingBy(f -> new OrderQueryDto(f.getOrderId(), f.getName(), f.getOrderDate(), f.getOrderStatus(), f.getAddress()),
+                        // 값
+                        Collectors.mapping(f -> new OrderItemQueryDto(f.getOrderId(), f.getItemName(), f.getOrderPrice(), f.getOrderCount()), Collectors.toList())))
+                .entrySet().stream()
+                .map(e -> new OrderQueryDto(e.getKey().getOrderId(), e.getKey().getName(), e.getKey().getOrderDate(), e.getKey().getOrderStatus(),
+                        e.getKey().getAddress(), e.getValue())).collect(Collectors.toList());
+
+        // toMap 활용
+        List<OrderQueryDto> collect1 = flat.stream()
+                .collect(Collectors.toMap(
+                        f -> f.getOrderId(), // 키 설정
+                        f -> { // 값 설정
+                            List<OrderItemQueryDto> items = new ArrayList<>();
+                            items.add(new OrderItemQueryDto(f.getOrderId(), f.getItemName(), f.getOrderPrice(), f.getOrderCount()));
+                            return new OrderQueryDto(f.getOrderId(), f.getName(), f.getOrderDate(), f.getOrderStatus(), f.getAddress(), items);
+                        }, // 병합 함수
+                        (existing, replacement) -> {
+                            existing.getOrderItems().addAll(replacement.getOrderItems());
+                            return existing;
+                        }
+                )).values().stream().collect(Collectors.toList());
+        return new Result(collect1);
+
     }
 
     @Getter
