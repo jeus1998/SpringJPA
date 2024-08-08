@@ -81,7 +81,15 @@
   - 엔티티를 DTO로 변환(V2): N+1 문제 
   - 엔티티를 DTO로 변환 + 패치 조인 활용(V3): N+1 문제 해결 
   - JPA에서 DTO로 바로 조회(V4): N+1 문제 해결 + V3 보다 성능 개선, 재사용성이 떨어지는 문제, 트레이드 오프 & 권장하는 스타일  
-  - 
+- [Section4 API 개발 고급 - 컬렉션 조회 최적화](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section4%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%BB%AC%EB%A0%89%EC%85%98%20%EC%A1%B0%ED%9A%8C%20%EC%B5%9C%EC%A0%81%ED%99%94)
+  - 엔티티를 직접 노출(V1)
+  - 엔티티를 `DTO`로 변환(V2)
+  - 엔티티를 `DTO`로 변환 + 패치 조인 활용(V3): N+1 문제 해결 
+  - 엔티티를 `DTO`로 변환 + 패치 조인 활용(V3-1): N+1 문제 해결 + 페이징 문제 해결: `@BatchSize`, `hibernate.default_batch_fetch_size`
+  - `JPA`에서 `DTO`로 바로 조회(V4): N+1 문제 
+  - `JPA`에서 `DTO`로 바로 조회(V5): 컬렉션 조회 최적화 IN 절을 활용해서 메모리에 미리 조회해서 최적화 
+  - `JPA`에서 `DTO`로 바로 조회(V6): JOIN 결과를 그대로 조회 후 애플리케이션에서 원하는 모양으로 직접 변환
+    - stream 연산 : (groupingBy, mapping), toMap() + 병합합수 
 ## 스프링 데이터 JPA
 
 ## Querydsl
