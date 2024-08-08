@@ -90,6 +90,8 @@
   - `JPA`에서 `DTO`로 바로 조회(V5): 컬렉션 조회 최적화 IN 절을 활용해서 메모리에 미리 조회해서 최적화 
   - `JPA`에서 `DTO`로 바로 조회(V6): JOIN 결과를 그대로 조회 후 애플리케이션에서 원하는 모양으로 직접 변환
     - stream 연산 : (groupingBy, mapping), toMap() + 병합합수 
+- [Section5 API 개발 고급 - 실무 필수 최적화](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section5%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%8B%A4%EB%AC%B4%20%ED%95%84%EC%88%98%20%EC%B5%9C%EC%A0%81%ED%99%94)
+  - OSIV - Open Session In View, 성능 최적화
 ## 스프링 데이터 JPA
 
 ## Querydsl
