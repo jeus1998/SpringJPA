@@ -93,5 +93,7 @@
 - [Section5 API 개발 고급 - 실무 필수 최적화](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section5%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%8B%A4%EB%AC%B4%20%ED%95%84%EC%88%98%20%EC%B5%9C%EC%A0%81%ED%99%94)
   - OSIV - Open Session In View, 성능 최적화
 ## 스프링 데이터 JPA
+- [Section1 프로젝트 환경설정](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section1%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95)
+  - 쿼리 파라미터 로그 남기기(외부 라이브러리), application.yaml 설정, 라이브러리 체크 
 
 ## Querydsl
