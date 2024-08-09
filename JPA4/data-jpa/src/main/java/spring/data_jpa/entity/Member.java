@@ -1,19 +1,39 @@
 package spring.data_jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(of = {"id", "username", "age"})
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "MEMBER_ID")
+    @Column(name = "member_id")
     private Long id;
     private String username;
+    private int age;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
+
     public Member(String username) {
         this.username = username;
     }
+
+    public Member(String username, int age, Team team) {
+        this.username = username;
+        this.age = age;
+        if(team != null){
+            changeTeam(team);
+        }
+    }
+
+    // 연관관계 양방향 세팅
+    public void changeTeam(Team team){
+        this.team = team;
+        team.getMembers().add(this);
+    }
+
 }
