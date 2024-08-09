@@ -97,6 +97,8 @@
   - 쿼리 파라미터 로그 남기기(외부 라이브러리), application.yaml 설정, 라이브러리 체크 
 - [Section2 예제 도메인 모델](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section2%20%EC%98%88%EC%A0%9C%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EB%AA%A8%EB%8D%B8)
   - JPA 복습(연관관계 편의 메서드, 지연 로딩, 롬복)
+- [Section3 공동 인터페이스 기능](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section3%20%EA%B3%B5%ED%86%B5%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%20%EA%B8%B0%EB%8A%A5)
+  - JPA 리포지토리 VS Spring Data Jpa 리포지토리, 공통 인터페이스 설정 & 적용, 공통 인터페이스 기능 분석  
 
 
 ## Querydsl
