@@ -104,4 +104,28 @@ class MemberJpaRepositoryTest {
         assertThat(totalCount).isEqualTo(5);
     }
 
+    @Test
+    public void bulkUpdate(){
+        // given
+        memberJpaRepository.save(new Member("member1", 10));
+        memberJpaRepository.save(new Member("member2", 19));
+        memberJpaRepository.save(new Member("member3", 20));
+        memberJpaRepository.save(new Member("member4", 21));
+        memberJpaRepository.save(new Member("member5", 40));
+
+        // when
+        int resultCount = memberJpaRepository.bulkAgePlus(20);
+
+        // then
+        assertThat(resultCount).isEqualTo(3);
+
+        // @Modifying(clearAutomatically = false) 테스트
+        List<Member> result = memberJpaRepository.findByUsername("member5");
+        assertThat(result.get(0).getAge()).isEqualTo(40);
+
+        // 영속성 컨텍스트에는 (member5 age 40) 형태로 존재
+        // 업데이트 jpql 이니까 flush() & 해당 벌크성 수정 쿼리 날라간다.
+        // 이미 영속성 컨텍스트 1차 캐시에 나이 40으로 있어서 lost update 현상 발생
+    }
+
 }
