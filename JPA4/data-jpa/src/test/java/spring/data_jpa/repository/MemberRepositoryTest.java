@@ -1,5 +1,7 @@
 package spring.data_jpa.repository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MemberRepositoryTest {
     @Autowired MemberRepository memberRepository;
     @Autowired TeamRepository teamRepository;
+    @Autowired EntityManager em;
 
     @Test
     public void testMember(){
@@ -218,5 +221,70 @@ class MemberRepositoryTest {
 
         // then
         assertThat(resultCount).isEqualTo(3);
+    }
+    @Test
+    public void findMemberLazy(){
+        // given
+        // member1 -> teamA
+        // member2 -> teamB
+
+        Team teamA = new Team("teamA");
+        teamRepository.save(teamA);
+        Team teamB = new Team("teamB");
+        teamRepository.save(teamB);
+
+        Member member1 = new Member("member1", 10);
+        member1.changeTeam(teamA);
+        memberRepository.save(member1);
+
+        Member member2 = new Member("member2", 20);
+        member2.changeTeam(teamB);
+        memberRepository.save(member2);
+
+        em.flush();
+        em.clear();
+
+        List<Member> members = memberRepository.findAll();
+        // N+1 문제
+        for (Member member : members) {
+            System.out.println("member = " + member);
+            Team team = member.getTeam();
+            System.out.println(Persistence.getPersistenceUtil().isLoaded(team)); // false
+            System.out.println("team = " + team);
+        }
+    }
+
+    @Test
+    public void findMemberFetchJoin(){
+        // given
+        // member1 -> teamA
+        // member2 -> teamB
+
+        Team teamA = new Team("teamA");
+        teamRepository.save(teamA);
+        Team teamB = new Team("teamB");
+        teamRepository.save(teamB);
+
+        Member member1 = new Member("member1", 10);
+        member1.changeTeam(teamA);
+        memberRepository.save(member1);
+
+        Member member2 = new Member("member2", 20);
+        member2.changeTeam(teamB);
+        memberRepository.save(member2);
+
+        em.flush();
+        em.clear();
+
+        // List<Member> members = memberRepository.findMemberFetchJoin();
+        List<Member> members = memberRepository.findAll();
+
+        // N+1 문제해결 by 엔티티 그래프
+        for (Member member : members) {
+            System.out.println("member = " + member);
+            Team team = member.getTeam();
+            System.out.println(Persistence.getPersistenceUtil().isLoaded(team)); // true
+            System.out.println("team = " + team);
+        }
     }
 }
