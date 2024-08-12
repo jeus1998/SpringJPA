@@ -99,6 +99,14 @@
   - JPA 복습(연관관계 편의 메서드, 지연 로딩, 롬복)
 - [Section3 공동 인터페이스 기능](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section3%20%EA%B3%B5%ED%86%B5%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%20%EA%B8%B0%EB%8A%A5)
   - JPA 리포지토리 VS Spring Data Jpa 리포지토리, 공통 인터페이스 설정 & 적용, 공통 인터페이스 기능 분석  
-
+- [Section4 쿼리 메소드 기능](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section4%20%EC%BF%BC%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%EA%B8%B0%EB%8A%A5)
+  - 메소드 이름으로 쿼리 생성 
+  - `JPA NamedQuery`
+  - `@Query`, DTO 조회하기 
+  - 파라미터 바인딩, 반환타입 
+  - 순수 JPA 페이징과 정렬, 스프링 데이터 JPA 페이징과 정렬 
+  - 벌크성 수정 쿼리 - `@Modifying(clearAutomatically = true)`
+  - 페치 조인 & `@EntityGraph`
+  - JPA Hint & Lock
 
 ## Querydsl
