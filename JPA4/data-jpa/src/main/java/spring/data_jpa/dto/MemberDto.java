@@ -3,6 +3,7 @@ package spring.data_jpa.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
+import spring.data_jpa.entity.Member;
 
 
 @Getter
@@ -15,5 +16,11 @@ public class MemberDto {
         this.id = id;
         this.username = username;
         this.teamName = teamName;
+    }
+    // map 편의 메서드
+    public MemberDto(Member member){
+        this.id = member.getId();
+        this.username = member.getUsername();
+        this.teamName = member.getTeam().getName();
     }
 }
