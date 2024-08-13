@@ -1,5 +1,6 @@
 package spring.data_jpa.repository;
 
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 class MemberJpaRepositoryTest {
     @Autowired MemberJpaRepository memberJpaRepository;
-
+    @Autowired EntityManager em;
     @Test
     public void testMember(){
         Member member = new Member("memberA");
@@ -127,5 +128,25 @@ class MemberJpaRepositoryTest {
         // 업데이트 jpql 이니까 flush() & 해당 벌크성 수정 쿼리 날라간다.
         // 이미 영속성 컨텍스트 1차 캐시에 나이 40으로 있어서 lost update 현상 발생
     }
+    @Test
+    public void JpaEventBaseEntity() throws InterruptedException{
+        // given
+        Member member = new Member("member1");
+        memberJpaRepository.save(member); // @PrePersist
+
+        Thread.sleep(1000);
+        member.setUsername("member2");
+
+        em.flush(); // @PreUpdate
+        em.clear();
+
+        // when
+        Member findMember = memberJpaRepository.findById(member.getId()).get();
+
+        // then
+        System.out.println("findMember.createdDate = " + findMember.getCreatedDate());
+        // System.out.println("findMember.updatedDate = " + findMember.getUpdatedDate());
+    }
+
 
 }
