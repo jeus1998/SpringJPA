@@ -114,6 +114,8 @@
     `@CreatedBy`, `@LastModifiedBy`, `@CreatedDate`, `@LastModifiedDate`
   - 도메인 클래스 컨버터 - HTTP 파라미터로 넘어온 엔티티의 아이디로 엔티티 객체를 찾아서 바인딩
   - 페이징과 정렬 - `Pageable`, `PageableRequest`, `@PageableDefault`
+- [Section6 스프링 데이터 JPA 분석](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section6%20%EC%8A%A4%ED%94%84%EB%A7%81%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20JPA%20%EB%B6%84%EC%84%9D)
+  - `SimpleJpaRepository` 분석, save() 메서드 로직 merge() vs persist(), `Persistable` 인터페이스 활용하기 
 
 
 ## Querydsl
