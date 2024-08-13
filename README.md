@@ -108,5 +108,12 @@
   - 벌크성 수정 쿼리 - `@Modifying(clearAutomatically = true)`
   - 페치 조인 & `@EntityGraph`
   - JPA Hint & Lock
+- [Section5 확장 기능](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section5%20%ED%99%95%EC%9E%A5%20%EA%B8%B0%EB%8A%A5)
+  - 사용자 정의 리포지토리 
+  - Auditing - `@PrePersist`, `@PreUpdate`, `@EnableJpaAuditing`, `@EntityListeners(AuditingEntityListener.class)`, `AuditorAware`,
+    `@CreatedBy`, `@LastModifiedBy`, `@CreatedDate`, `@LastModifiedDate`
+  - 도메인 클래스 컨버터 - HTTP 파라미터로 넘어온 엔티티의 아이디로 엔티티 객체를 찾아서 바인딩
+  - 페이징과 정렬 - `Pageable`, `PageableRequest`, `@PageableDefault`
+
 
 ## Querydsl
