@@ -129,4 +129,11 @@
 
 - [Section1 프로젝트 환경설정](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section1%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95)
 - [Section2 예제 도메인 모델](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section2%20%EC%98%88%EC%A0%9C%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EB%AA%A8%EB%8D%B8)
+- [Section3 기본 문법](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section3%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95)
+  - Q-Type 활용 - static import  
+  - 결과 조회 - fetch(), fetchOne(), fetchFirst(), fetchResults(), fetchCount()
+  - 정렬 - desc(), asc(), nullsFirst(), nullsLast()
+  - 페이징 - offset(), limit(), fetchResults()
+  - 조인 - 기본 조인, on절 활용, 페치 조인(fetchJoint())
+  - 서브 쿼리, Case 문 - CaseBuilder, 상수 - Expressions.constant, 문자 더하기 - concat(), stringValue()
 
