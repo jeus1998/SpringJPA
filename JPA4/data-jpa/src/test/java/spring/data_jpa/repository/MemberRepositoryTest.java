@@ -12,6 +12,7 @@ import spring.data_jpa.dto.MemberDto;
 import spring.data_jpa.entity.Member;
 import spring.data_jpa.entity.Team;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -429,6 +430,49 @@ class MemberRepositoryTest {
         for (NestedClosedProjections nestedClosedProjections : result) {
             System.out.println(nestedClosedProjections.getUsername());
             System.out.println(nestedClosedProjections.getTeam().getName());
+        }
+    }
+    @Test
+    public void nativeQuery(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        Member result = memberRepository.findByNativeQuery("m1");
+        System.out.println("result = " + result);
+    }
+
+    @Test
+    public void nativeQueryProjections(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 10, teamA);
+        Member m2 = new Member("m2", 20, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        Page<MemberProjection> result = memberRepository.findByNativeProjection(PageRequest.of(0, 3));
+        List<MemberProjection> content = result.getContent();
+        for (MemberProjection memberProjection : content) {
+            String username = memberProjection.getUsername();
+            System.out.println("username = " + username);
+            int age = memberProjection.getAge();
+            System.out.println("age = " + age);
+            String teamName = memberProjection.getTeamName();
+            System.out.println("teamName = " + teamName);
+            LocalDateTime createdDate = memberProjection.getCreatedDate();
+            System.out.println("createdDate = " + createdDate);
         }
     }
 }
