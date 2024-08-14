@@ -1,5 +1,6 @@
 package spring.querydsl;
 
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import spring.querydsl.entity.Member;
 import spring.querydsl.entity.QMember;
 import spring.querydsl.entity.Team;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 import static spring.querydsl.entity.QMember.*;
 
@@ -89,6 +93,37 @@ public class QuerydslBasicTest {
                         (member.age.eq(10)))
                 .fetchOne();
         assertThat(findMember.getUsername()).isEqualTo("member1");
+    }
+
+    @Test
+    public void resultFetch(){
+        // 리스트 반환 없으면 빈 리스트
+        List<Member> fetch = queryFactory
+                .selectFrom(member)
+                .fetch();
+        // 결과가 없으면 null 결과가 둘 이상이면 com.querydsl.core.NonUniqueResultException
+        Member fetchOne = queryFactory
+                .selectFrom(member)
+                .fetchOne();
+
+
+        Member fetchFirst = queryFactory
+                .selectFrom(member)
+                .fetchFirst();// limit(1).fetchOne();
+
+        // 페이징 정보 포함, total count 쿼리 추가 실행
+        // total count 쿼리가 무거워지면 사용 x 분리 해야함
+        QueryResults<Member> results = queryFactory
+                .selectFrom(member)
+                .fetchResults();
+
+        long total = results.getTotal();
+        List<Member> content = results.getResults();
+
+        // count 쿼리로 변경해서 count 수 조회
+        long totalCount = queryFactory
+                .selectFrom(member)
+                .fetchCount();
     }
 
 }
