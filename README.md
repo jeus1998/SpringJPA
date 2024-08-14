@@ -1,6 +1,7 @@
 # 인프런 스프링 부트와 JPA 실무 완전 정복 로드맵 공부 💪
 
 ## 자바 ORM 표준 JPA 프로그래밍 - 기본편
+
 - [Section2 JPA 시작하기](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section2%20JPA%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
   - H2DB 설정, DB 방언(dialect), EntityManagerFactory, EntityManager
 - [Section3 영속성 - 내부 동작 방식](https://github.com/jeus1998/SpringJPA/tree/main/JPA1/jpastart/Section3%20%EC%98%81%EC%86%8D%EC%84%B1%20-%20%EB%82%B4%EB%B6%80%20%EB%8F%99%EC%9E%91%20%EB%B0%A9%EC%8B%9D)
@@ -41,6 +42,7 @@
   - 네임드 쿼리: `@NamedQuery`, createNamedQuery()
   - 벌크 연산: executeUpdate(), 벌크 연산 주의점(영속성 컨텍스트), Dirty Checking vs 벌크 연산  
 ## 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발
+
 - [Section1 프로젝트 환경 설정](https://github.com/jeus1998/SpringJPA/tree/main/JPA2/jpashop/Section1%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95)
   - 라이브러리 체크, View 환경 설정(타임리프), spring-boot-devtools - 서버 재시작❌ View 파일 변경
   - H2 데이터베이스 설치 
@@ -69,6 +71,7 @@
   - 도메인 기능 구현 
   - ⭐️ 변경 감지 vs 병합(merge)
 ## 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화
+
 - [Section1 API 개발 기본](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section1%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B8%B0%EB%B3%B8)
   - DTO 사용으로 엔티티와 프레젠테이션 계층을 분리 
   - response : 스트림 연산 & 제네릭 활용 
@@ -93,6 +96,7 @@
 - [Section5 API 개발 고급 - 실무 필수 최적화](https://github.com/jeus1998/SpringJPA/tree/main/JPA3/jpashop/Section5%20API%20%EA%B0%9C%EB%B0%9C%20%EA%B3%A0%EA%B8%89%20-%20%EC%8B%A4%EB%AC%B4%20%ED%95%84%EC%88%98%20%EC%B5%9C%EC%A0%81%ED%99%94)
   - OSIV - Open Session In View, 성능 최적화
 ## 스프링 데이터 JPA
+
 - [Section1 프로젝트 환경설정](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section1%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95)
   - 쿼리 파라미터 로그 남기기(외부 라이브러리), application.yaml 설정, 라이브러리 체크 
 - [Section2 예제 도메인 모델](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section2%20%EC%98%88%EC%A0%9C%20%EB%8F%84%EB%A9%94%EC%9D%B8%20%EB%AA%A8%EB%8D%B8)
@@ -116,6 +120,9 @@
   - 페이징과 정렬 - `Pageable`, `PageableRequest`, `@PageableDefault`
 - [Section6 스프링 데이터 JPA 분석](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section6%20%EC%8A%A4%ED%94%84%EB%A7%81%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20JPA%20%EB%B6%84%EC%84%9D)
   - `SimpleJpaRepository` 분석, save() 메서드 로직 merge() vs persist(), `Persistable` 인터페이스 활용하기 
-
+- [Section7 나머지 기능들](https://github.com/jeus1998/SpringJPA/tree/main/JPA4/data-jpa/Section7%20%EB%82%98%EB%A8%B8%EC%A7%80%20%EA%B8%B0%EB%8A%A5%EB%93%A4)
+  - Query By Example - Probe, ExampleMatcher, Example
+  - Projections - 인터페이스 기반 & 클래스 기반 , 동적 Projections, 중첩 구조 처리와 최적화 
+  - 네이티브 쿼리 - 네이티브 쿼리 & DTO 반환 Projections 활용 
 
 ## Querydsl
