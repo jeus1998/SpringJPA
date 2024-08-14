@@ -346,4 +346,89 @@ class MemberRepositoryTest {
         assertThat(result.get(0).getUsername()).isEqualTo("m1");
 
     }
+
+    @Test
+    public void projections(){
+        //given
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        //when
+        List<UserNameOnly> result = memberRepository.findProjectionsByUsername("m1");
+
+        for (UserNameOnly userNameOnly : result) {
+            System.out.println("userNameOnly = " + userNameOnly);
+        }
+    }
+
+    @Test
+    public void projections2(){
+        //given
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<UserNameAge> result = memberRepository.findProjectionsByUsernameAndAge("m2", 0);
+        for (UserNameAge userNameAge : result) {
+            System.out.println(userNameAge.getUsername());
+            System.out.println(userNameAge.getAge());
+            System.out.println(userNameAge.getClass());
+        }
+    }
+
+    @Test
+    public void projections3(){
+        //given
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<UsernameOnlyDto> result = memberRepository.findClassProjectionsByUsername("m2");
+        for (UsernameOnlyDto usernameOnlyDto : result) {
+            System.out.println(usernameOnlyDto.getUsername());
+            System.out.println(usernameOnlyDto.getClass());
+        }
+    }
+
+    @Test
+    public void genericAndNested(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<NestedClosedProjections> result = memberRepository.findProjectionGenericByUsername("m1", NestedClosedProjections.class);
+        for (NestedClosedProjections nestedClosedProjections : result) {
+            System.out.println(nestedClosedProjections.getUsername());
+            System.out.println(nestedClosedProjections.getTeam().getName());
+        }
+    }
 }
