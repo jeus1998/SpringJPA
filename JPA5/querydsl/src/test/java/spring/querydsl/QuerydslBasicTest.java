@@ -39,6 +39,9 @@ public class QuerydslBasicTest {
         em.persist(member2);
         em.persist(member3);
         em.persist(member4);
+
+        em.flush();
+        em.clear();
     }
 
     @Test
@@ -152,6 +155,38 @@ public class QuerydslBasicTest {
         assertThat(member6.getUsername()).isEqualTo("member6");
         assertThat(memberNull.getUsername()).isNull();
 
+    }
+
+    @Test
+    public void paging1(){
+        List<Member> result = queryFactory
+                .selectFrom(member)
+                .orderBy(member.username.desc())
+                .offset(1) // 0부터 시작 (zero index) -> 정렬된 테이블 결과에서 row 행 시작 위치를 말함
+                .limit(2)  // 최대 2건 조회
+                .fetch();
+
+        System.out.println("result = " + result);
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.get(0).getUsername()).isEqualTo("member3");
+        assertThat(result.get(1).getUsername()).isEqualTo("member2");
+    }
+
+    @Test
+    public void paging2(){
+        QueryResults<Member> queryResults = queryFactory
+                .selectFrom(member)
+                .orderBy(member.username.desc())
+                .offset(1)
+                .limit(2)
+                .fetchResults();
+
+        // count 쿼리를 통해 전체 조회 수
+        assertThat(queryResults.getTotal()).isEqualTo(4);
+        assertThat(queryResults.getLimit()).isEqualTo(2);
+        assertThat(queryResults.getOffset()).isEqualTo(1);
+        assertThat(queryResults.getResults().get(0).getUsername()).isEqualTo("member3");
+        assertThat(queryResults.getResults().get(1).getUsername()).isEqualTo("member2");
     }
 
 }
