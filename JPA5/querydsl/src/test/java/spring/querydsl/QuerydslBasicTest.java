@@ -11,6 +11,7 @@ import spring.querydsl.entity.Member;
 import spring.querydsl.entity.QMember;
 import spring.querydsl.entity.Team;
 import static org.assertj.core.api.Assertions.*;
+import static spring.querydsl.entity.QMember.*;
 
 @SpringBootTest
 @Transactional
@@ -58,4 +59,17 @@ public class QuerydslBasicTest {
 
         assertThat(findMember.getUsername()).isEqualTo("member1");
     }
+
+    @Test
+    public void staticQtype(){
+        // import static spring.querydsl.entity.QMember.*;
+        Member findMember = queryFactory
+                .select(member) // static import 상태
+                .from(member)
+                .where(member.username.eq("member1"))
+                .fetchOne();
+
+        assertThat(findMember.getUsername()).isEqualTo("member1");
+    }
+
 }
