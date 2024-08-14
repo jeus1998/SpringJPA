@@ -4,6 +4,7 @@ import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -317,6 +318,40 @@ public class QuerydslBasicTest {
 
         for (Tuple tuple : result) {
             System.out.println("tuple = " + tuple);
+        }
+    }
+
+    @Test
+    public void fetchJoinNo(){
+        em.flush();
+        em.clear();
+
+        List<Member> members = queryFactory
+                .selectFrom(member)
+                .fetch();
+        // N+1
+        for (Member member : members) {
+            System.out.println("member = " + member);
+            System.out.println(Persistence.getPersistenceUtil().isLoaded(member.getTeam())); // false
+            System.out.println("member.getTeam() = " + member.getTeam());
+        }
+    }
+
+    @Test
+    public void fetchJoinYes(){
+        em.flush();
+        em.clear();
+
+        List<Member> members = queryFactory
+                .select(member)
+                .from(member)
+                .join(member.team, team).fetchJoin()
+                .fetch();
+        // 1개의 쿼리
+        for (Member member : members) {
+            System.out.println("member = " + member);
+            System.out.println(Persistence.getPersistenceUtil().isLoaded(member.getTeam())); // true
+            System.out.println("member.getTeam() = " + member.getTeam());
         }
     }
 
