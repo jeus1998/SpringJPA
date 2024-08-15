@@ -141,4 +141,8 @@
   - 동적 쿼리 - `BooleanBuilder`, where 다중 파라미터, `BooleanExpression`
   - 수정, 삭제 벌크 연산 
   - SQL function & querydsl 내장 function
+- [Section6 순수 JPA와 Querydsl](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section5%20%EC%8B%A4%EB%AC%B4%20%ED%99%9C%EC%9A%A9%20-%20%EC%88%9C%EC%88%98%20JPA%EC%99%80%20Querydsl)
+  - 순수 JPA 리포지토리 & Querydsl - JPAQueryFactory 동시성 문제와 스프링 
+  - 동적 쿼리와 성능 최적화 조회 - BooleanBuilder & where 절 파라미터 사용 
+  - 조회 API 컨트롤러 개발 - profile 
 
