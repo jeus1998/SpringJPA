@@ -2,15 +2,18 @@ package spring.querydsl.repository;
 
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.util.StringUtils;
 import spring.querydsl.dto.MemberSearchCondition;
 import spring.querydsl.dto.MemberTeamDto;
 import spring.querydsl.dto.QMemberTeamDto;
+import spring.querydsl.entity.Member;
 
 import java.util.List;
 
@@ -77,18 +80,18 @@ public class MemberRepositoryCustomImpl implements MemberRepositoryCustom {
                 .limit(pageable.getPageSize()) // LIMIT: 행을 얼마나 가져올지
                 .fetch();
 
-        // 카운트
-        Long total = queryFactory
+        // 카운트 최적화
+        JPAQuery<Member> countQuery = queryFactory
                 .select(member)
                 .from(member)
                 .leftJoin(member.team, team)
                 .where(usernameEq(condition.getUsername()),
                         teamNameEq(condition.getTeamName()),
                         ageGoe(condition.getAgeGoe()),
-                        ageLoe(condition.getAgeLoe()))
-                .fetchCount();
+                        ageLoe(condition.getAgeLoe()));
 
-        return new PageImpl<>(content, pageable, total);
+        return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchCount);
+        // return new PageImpl<>(content, pageable, total);
     }
 
     private BooleanExpression ageGoe(Integer ageGoe) {
