@@ -1,10 +1,16 @@
 package spring.querydsl.repository;
 
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import spring.querydsl.dto.MemberSearchCondition;
+import spring.querydsl.dto.MemberTeamDto;
 import spring.querydsl.entity.Member;
+import spring.querydsl.entity.Team;
+
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,6 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 class MemberRepositoryTest {
     @Autowired MemberRepository memberRepository;
+    @Autowired
+    EntityManager em;
     @Test
     public void basicTest(){
         Member member = new Member("member1", 10);
@@ -27,5 +35,34 @@ class MemberRepositoryTest {
 
         List<Member> result2 = memberRepository.findByUsername(member.getUsername());
         assertThat(result2).containsExactly(member);
+    }
+
+    @Test
+    public void searchTest(){
+        Team teamA = new Team("teamA");
+        Team teamB = new Team("teamB");
+        em.persist(teamA);
+        em.persist(teamB);
+
+        Member member1 = new Member("member1", 10, teamA);
+        Member member2 = new Member("member2", 20, teamA);
+        Member member3 = new Member("member3", 30, teamB);
+        Member member4 = new Member("member4", 40, teamB);
+        em.persist(member1);
+        em.persist(member2);
+        em.persist(member3);
+        em.persist(member4);
+
+        MemberSearchCondition condition = new MemberSearchCondition();
+        condition.setAgeLoe(20);
+        condition.setTeamName("teamA");
+
+        List<MemberTeamDto> result = memberRepository.search(condition);
+        for (MemberTeamDto memberTeamDto : result) {
+            System.out.println("memberTeamDto = " + memberTeamDto);
+        }
+
+        assertThat(result).extracting("username")
+                .containsExactly("member1", "member2");
     }
 }
