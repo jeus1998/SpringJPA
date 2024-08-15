@@ -59,8 +59,6 @@ public class QuerydslBasicTest {
         em.persist(member3);
         em.persist(member4);
 
-        em.flush();
-        em.clear();
     }
 
     @Test
@@ -703,6 +701,64 @@ public class QuerydslBasicTest {
     // 조립 가능
     private BooleanExpression allEq(String usernameParam, Integer ageParam){
         return usernameEq(usernameParam).and(ageEq(ageParam));
+    }
+
+    /**
+     * member1 10 -> set 비회원
+     * member2 20 -> set 비회원
+     * member3 30 -> 유지
+     * member4 40 -> 유지
+     */
+    @Test
+    // @Commit
+    public void bulkUpdate(){
+        long rowNum = queryFactory
+                .update(member)
+                .set(member.username, "비회원")
+                .where(member.age.lt(28))
+                .execute();
+
+        assertThat(rowNum).isEqualTo(2);
+
+        // 벌크 연산 주의 영속성 컨텍스트에 update x
+        List<Member> result = queryFactory
+                .selectFrom(member)
+                .where(usernameEq("비회원"))
+                .fetch();
+
+        for (Member member : result) {
+            System.out.println("member = " + member);
+        }
+
+        // select where 쿼리가 DB에 날라가고 엔티티를 가져오지만 영속성 컨텍스트에 이미 존재하기 때문에 where 조건은 DB에 맞는 식별자를 가지고
+        // 영속성 컨텍스트 결과를 보여준다...!!
+        // 정리하면 where 필터링은 DB에서 하고 값이 있는 친구들은 DB에서 가져온 엔티티를 반환하는게 아닌 영속성 컨텍스트에서 반환함
+
+        assertThat(result)
+                .extracting("username")
+                .containsExactly("member1", "member2");
+
+    }
+    @Test
+    public void bulkAdd(){
+        long count = queryFactory
+                .update(member)
+                .set(member.age, member.age.add(1))
+                .execute();
+
+        queryFactory
+                .update(member)
+                .set(member.age, member.age.divide(2));
+    }
+
+    @Test
+    public void bulkDelete(){
+        long count = queryFactory
+                .delete(member)
+                .where(member.age.gt(18))
+                .execute();
+        // 20,30,40
+        assertThat(count).isEqualTo(3);
     }
 
 }
