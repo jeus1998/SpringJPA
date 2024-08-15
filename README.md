@@ -148,4 +148,6 @@
 - [Section6 실무 활용 - 스프링 데이터 JPA와 Querydsl](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section6%20%EC%8B%A4%EB%AC%B4%20%ED%99%9C%EC%9A%A9%20-%20%EC%8A%A4%ED%94%84%EB%A7%81%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20JPA%EC%99%80%20Querydsl)
   - 순수 JPA 리포지토리 ➡️ 스프링 데이터 JPA 리포지토리 변환 - 사용자 정의 리포지토리 for Querydsl
   - Querydsl 페이징 fetchResults() `PageImpl`, 카운트 쿼리 분리 fetchCount(), 카운트 쿼리 분리 최적화 `PageableExecutionUtils`
+- [Section7 스프링 데이터 JPA가 제공하는 Querydsl 기능](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section7%20%EC%8A%A4%ED%94%84%EB%A7%81%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20JPA%EA%B0%80%20%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94%20Querydsl%20%EA%B8%B0%EB%8A%A5)
+
 
