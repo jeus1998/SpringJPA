@@ -135,5 +135,10 @@
   - 정렬 - desc(), asc(), nullsFirst(), nullsLast()
   - 페이징 - offset(), limit(), fetchResults()
   - 조인 - 기본 조인, on절 활용, 페치 조인(fetchJoint())
-  - 서브 쿼리, Case 문 - CaseBuilder, 상수 - Expressions.constant, 문자 더하기 - concat(), stringValue()
+  - 서브 쿼리 - JPAExpressions, Case 문 - CaseBuilder, 상수 - Expressions.constant, 문자 더하기 - concat(), stringValue()
+- [Section4 중급 문법](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section4%20%EC%A4%91%EA%B8%89%20%EB%AC%B8%EB%B2%95)
+  - 프로젝션 결과 반환 - 기본 반환, 2개 이상(tuple) 반환, DTO 조회(Projections.(xxx)), 별칭(ExpressionUtils.as), `@QueryProjection`
+  - 동적 쿼리 - `BooleanBuilder`, where 다중 파라미터, `BooleanExpression`
+  - 수정, 삭제 벌크 연산 
+  - SQL function & querydsl 내장 function
 
