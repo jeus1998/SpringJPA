@@ -141,8 +141,11 @@
   - 동적 쿼리 - `BooleanBuilder`, where 다중 파라미터, `BooleanExpression`
   - 수정, 삭제 벌크 연산 
   - SQL function & querydsl 내장 function
-- [Section6 순수 JPA와 Querydsl](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section5%20%EC%8B%A4%EB%AC%B4%20%ED%99%9C%EC%9A%A9%20-%20%EC%88%9C%EC%88%98%20JPA%EC%99%80%20Querydsl)
+- [Section5 순수 JPA와 Querydsl](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section5%20%EC%8B%A4%EB%AC%B4%20%ED%99%9C%EC%9A%A9%20-%20%EC%88%9C%EC%88%98%20JPA%EC%99%80%20Querydsl)
   - 순수 JPA 리포지토리 & Querydsl - JPAQueryFactory 동시성 문제와 스프링 
   - 동적 쿼리와 성능 최적화 조회 - BooleanBuilder & where 절 파라미터 사용 
   - 조회 API 컨트롤러 개발 - profile 
+- [Section6 실무 활용 - 스프링 데이터 JPA와 Querydsl](https://github.com/jeus1998/SpringJPA/tree/main/JPA5/querydsl/Section6%20%EC%8B%A4%EB%AC%B4%20%ED%99%9C%EC%9A%A9%20-%20%EC%8A%A4%ED%94%84%EB%A7%81%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20JPA%EC%99%80%20Querydsl)
+  - 순수 JPA 리포지토리 ➡️ 스프링 데이터 JPA 리포지토리 변환 - 사용자 정의 리포지토리 for Querydsl
+  - Querydsl 페이징 fetchResults() `PageImpl`, 카운트 쿼리 분리 fetchCount(), 카운트 쿼리 분리 최적화 `PageableExecutionUtils`
 
